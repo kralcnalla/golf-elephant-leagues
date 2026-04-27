@@ -156,8 +156,6 @@
   </div>
 </div>
 
-
-
 <!-- â•â• SCORECARD SCREEN â•â• -->
 <div class="screen" id="screen-card">
   <div>
@@ -227,7 +225,7 @@
 </div>
 <!-- Course Handicap Info Popup -->
 <div id="chcp-info" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;align-items:center;justify-content:center;padding:14px;" onclick="toggleModal('chcp-info')">
-  <div style="background:#fff;border-radius:16px;padding:20px;max-width:360px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 8px 32px rgba(0,0,0,.2);" onclick="event.stopPropagation()">
+  <div class="modal-inner" onclick="event.stopPropagation()">
     <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
       <div style="width:28px;height:28px;border-radius:50%;background:var(--green);color:#fff;font-size:14px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;">?</div>
       <div style="font-size:16px;font-weight:800;color:var(--text);flex:1;">Course Handicap</div>
@@ -259,7 +257,7 @@
 
 <!-- Handicap Index Info Popup -->
 <div id="hi-info" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:310;align-items:center;justify-content:center;padding:14px;" onclick="toggleModal('hi-info')">
-  <div style="background:#fff;border-radius:16px;padding:20px;max-width:360px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 8px 32px rgba(0,0,0,.2);" onclick="event.stopPropagation()">
+  <div class="modal-inner" onclick="event.stopPropagation()">
     <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
       <div style="width:28px;height:28px;border-radius:50%;background:var(--green);color:#fff;font-size:14px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;">?</div>
       <div style="font-size:16px;font-weight:800;color:var(--text);flex:1;">Handicap Index</div>
@@ -286,7 +284,7 @@
 
 <!-- Playing Off Info Popup -->
 <div id="playoff-info" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;align-items:center;justify-content:center;padding:14px;" onclick="toggleModal('playoff-info')">
-  <div style="background:#fff;border-radius:16px;padding:20px;max-width:360px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 8px 32px rgba(0,0,0,.2);" onclick="event.stopPropagation()">
+  <div class="modal-inner" onclick="event.stopPropagation()">
     <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
       <div style="width:28px;height:28px;border-radius:50%;background:var(--green);color:#fff;font-size:14px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;">?</div>
       <div style="font-size:16px;font-weight:800;color:var(--text);flex:1;">Playing Off</div>
@@ -457,7 +455,6 @@ const MATCH = {
 
 // ─── MATCH DATA ───────────────────────────────────────────────────────────────
 // In production this comes from the schedule. For demo, hardcoded.
-
 
 // ─── SCORING ENGINE ───────────────────────────────────────────────────────────
 function getCoursHcps() {
@@ -802,8 +799,8 @@ function renderPlayoffPreview(){
     <thead>
       <tr>
         <th class="po-th-name">Player</th>
-        <th class="po-th">CHP</th>
-        <th class="po-th">PO HCP</th>
+        <th class="po-th">Course Hdcp</th>
+        <th class="po-th">Strokes Given</th>
       </tr>
     </thead>
     <tbody>${rows}</tbody>
@@ -852,9 +849,6 @@ let S={
     B:[{name:'',chcp:null,isSub:false,isGuest:false,isSolo:false},{name:'',chcp:null,isSub:false,isGuest:false,isSolo:false}]
   }
 };
-
-function show(id){const el=document.getElementById(id);if(el)el.style.display='block';}
-function hide(id){const el=document.getElementById(id);if(el)el.style.display='none';}
 
 const SCREENS=['screen-league','screen-week','screen-match','screen-players','screen-players-b','screen-playoff'];
 function showScreen(id){
@@ -1048,7 +1042,6 @@ function setSolo(team,idx){
   updateBtn();
 }
 
-
 let PP={team:null,idx:null};
 
 function openPlayerPicker(team,idx){
@@ -1073,9 +1066,6 @@ function drawerTab(tab){
   else if(tab==='club') showClubTab(PP.team,PP.idx);
   else showGuestTab(PP.team,PP.idx);
 }
-
-function togglePicker(team,idx){ openPlayerPicker(team,idx); }
-function switchTab(team,idx,tab){ drawerTab(tab); }
 
 function getUsedNames(excludeTeam,excludeIdx){
   const used=new Set();
@@ -1178,8 +1168,6 @@ function selectPlayer(team,idx,name,isSub,isGuest,hi=null){
   updateBtn();
 }
 
-
-
 function adjHdcp(team,idx,delta){
   const cur=S.players[team][idx].chcp||0;
   const val=Math.max(0,Math.min(54,Math.round((cur+delta)*10)/10));
@@ -1202,7 +1190,6 @@ function updateChcp(team,idx,hi){
   if(!el) return;
   el.innerHTML=hi!==null?`Course Hdcp: <b>${hi}</b>`:'';
 }
-
 
 function updateBtn(){
   const btn=document.getElementById('btn-start');
