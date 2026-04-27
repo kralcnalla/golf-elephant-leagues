@@ -158,20 +158,22 @@
 
 <!-- â•â• SCORECARD SCREEN â•â• -->
 <div class="screen" id="screen-card">
-  <div>
-    <div class="ban-name" id="ban-na"></div>
-    <div class="ban-score green" id="ban-sa">0</div>
-    <div class="ban-detail" id="ban-da"></div>
-  </div>
-  <div class="ban-mid">
-    <div class="vs">vs</div>
-    <div class="dash">—</div>
-    <div style="font-size:9px;color:var(--muted);">11 pts total</div>
-  </div>
-  <div class="ban-right">
-    <div class="ban-name" id="ban-nb"></div>
-    <div class="ban-score red" id="ban-sb">0</div>
-    <div class="ban-detail" id="ban-db"></div>
+  <div class="banner">
+    <div>
+      <div class="ban-name" id="ban-na"></div>
+      <div class="ban-score green" id="ban-sa">0</div>
+      <div class="ban-detail" id="ban-da"></div>
+    </div>
+    <div class="ban-mid">
+      <div class="vs">vs</div>
+      <div class="dash">—</div>
+      <div style="font-size:9px;color:var(--muted);">11 pts total</div>
+    </div>
+    <div class="ban-right">
+      <div class="ban-name" id="ban-nb"></div>
+      <div class="ban-score red" id="ban-sb">0</div>
+      <div class="ban-detail" id="ban-db"></div>
+    </div>
   </div>
 </div>
 
@@ -536,8 +538,8 @@ function render() {
   const m = calcMatch();
   const c = course();
 
-  document.getElementById('hdr-match').textContent = `${MATCH.teamA.name} vs ${MATCH.teamB.name}`;
-  document.getElementById('hdr-info').textContent  = `${c.name} · ${MATCH.tee} · W${MATCH.week} · ${MATCH.date}`;
+  document.getElementById('hdr-match').textContent = '';
+  document.getElementById('hdr-info').textContent  = `${c.name} · W${MATCH.week} · ${MATCH.date}`;
   document.getElementById('ban-na').textContent  = MATCH.teamA.name;
   document.getElementById('ban-nb').textContent  = MATCH.teamB.name;
   document.getElementById('ban-sa').textContent  = m.totA;
@@ -602,8 +604,7 @@ function render() {
     pdiv.className='pcell';
     const chcp=chcps[pi];
     const playingOff=Math.max(0,chcp-lhcp);
-    const poLabel=playingOff===0?'<span class="po-scratch">scratch ⛳</span>':`+${playingOff}`;
-    pdiv.innerHTML=`<div class="pname">${p.name.split(' ')[0]}</div><div class="phcp">CH ${chcp} · ${poLabel}</div>`;
+    pdiv.innerHTML=`<div class="pname">${p.name.split(' ')[0]}</div><div class="phcp">CH ${chcp}</div>`;
     td.appendChild(pdiv);tr.appendChild(td);
 
     let gTot=0,hasAny=false;
