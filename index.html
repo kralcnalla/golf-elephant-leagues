@@ -1,0 +1,1307 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#fffbe8">
+<title>Golf Elephant · Nemadji Scorecard</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="hdr">
+  <button class="hdr-back" onclick="newRound()"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg><span class="back-label">Back</span></button>
+  <div class="hdr-brand" style="display:flex;align-items:center;gap:10px;">
+    <img src="data:image/png;base64,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" alt="Golf Elephant logo" style="width:36px;height:36px;flex-shrink:0;object-fit:contain;">
+    <div>
+      <div style="font-size:16px;font-weight:900;color:var(--text);letter-spacing:-.01em;line-height:1.15;">Nemadji Men's Club Leagues</div>
+      <div style="display:inline-flex;align-items:center;gap:6px;background:var(--green);color:#fff;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;padding:3px 10px 3px 8px;border-radius:20px;margin-top:4px;">
+        <span style="width:8px;height:8px;border-radius:50%;background:#fff;flex-shrink:0;animation:livepulse 1.4s ease-in-out infinite;"></span>Live Scoring
+      </div>
+    </div>
+  </div>
+  <div class="hdr-right">
+    <div class="hdr-match" id="hdr-match"></div>
+    <div class="hdr-info"  id="hdr-info"></div>
+  </div>
+</div>
+
+<!-- â•â• SETUP SCREEN â•â• -->
+
+<!-- SETUP SCREENS -->
+
+<!-- Global progress bar (hidden during scorecard) -->
+<div class="prog" id="prog-bar">
+  <div class="prog-step" id="prog-1"><div class="prog-dot">1</div><div class="prog-lbl">League</div></div>
+  <div class="prog-line" id="prog-line-1"></div>
+  <div class="prog-step" id="prog-2"><div class="prog-dot">2</div><div class="prog-lbl">Week</div></div>
+  <div class="prog-line" id="prog-line-2"></div>
+  <div class="prog-step" id="prog-3"><div class="prog-dot">3</div><div class="prog-lbl">Match</div></div>
+  <div class="prog-line" id="prog-line-3"></div>
+  <div class="prog-step" id="prog-4"><div class="prog-dot">4</div><div class="prog-lbl">Lineup</div></div>
+</div>
+
+<div class="screen active" id="screen-league">
+  <div class="hero">
+    <img src="img/nemadji-logo.png" alt="Nemadji Men's Club" class="hero-logo">
+  </div>
+  <div class="setup">
+    <div class="screen-hdr">
+      <div class="card-hdr-spacer"></div>
+      <div class="card-hdr-title">Select League</div>
+      <div class="card-hdr-spacer"></div>
+    </div>
+    <div id="league-list" style="padding:12px;display:flex;flex-direction:column;gap:10px;">
+        <button class="league-btn" id="lb-D1" onclick="selectLeague('D1')">
+          <div class="lb-name">Wed Two-Man Best Ball — D1</div>
+          <div class="lb-go">›</div>
+        </button>
+        <button class="league-btn" id="lb-D2" onclick="selectLeague('D2')">
+          <div class="lb-name">Wed Two-Man Best Ball — D2</div>
+          <div class="lb-go">›</div>
+        </button>
+        <div class="league-coming">
+          <div class="lc-name">Wed Two-Man Best Ball — Playoffs</div>
+          <div class="lc-badge">Coming soon</div>
+        </div>
+        <div class="league-coming">
+          <div class="lc-name">Bushwhackers — Mon/Tue</div>
+          <div class="lc-badge">Coming soon</div>
+        </div>
+        <div class="league-coming">
+          <div class="lc-name">Scratch League — Tue</div>
+          <div class="lc-badge">Coming soon</div>
+        </div>
+        <div class="league-coming">
+          <div class="lc-name">40 &amp; Over — Thu</div>
+          <div class="lc-badge">Coming soon</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="screen" id="screen-week">
+  <div class="setup">
+    <div class="screen-hdr">
+      <button class="card-back" onclick="backToLeague()"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg><span class="back-label">Back</span></button>
+      <div class="card-hdr-title">Select Week</div>
+      <div class="card-hdr-spacer"></div>
+    </div>
+    <div class="week-list" id="week-list"></div>
+  </div>
+</div>
+
+<div class="screen" id="screen-match">
+  <div class="setup">
+    <div class="screen-hdr">
+      <button class="card-back" onclick="backToWeek()"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg><span class="back-label">Back</span></button>
+      <div class="card-hdr-title">Select Match</div>
+      <div class="card-hdr-spacer"></div>
+    </div>
+    <div id="match-list" style="padding:12px;display:flex;flex-direction:column;gap:8px;"></div>
+  </div>
+</div>
+
+<div class="screen" id="screen-players">
+  <div class="setup">
+    <div class="screen-hdr">
+      <button class="card-back" onclick="backToMatch()"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg><span class="back-label">Back</span></button>
+      <div class="card-hdr-title" id="label-a-hdr">Team A</div>
+      <div class="card-hdr-spacer"></div>
+    </div>
+    <div class="player-slot team-a-slot">
+      <div class="ps-label green" id="label-a"></div>
+      <div id="slot-a0"></div>
+      <div id="slot-a1"></div>
+    </div>
+  </div>
+  <div class="screen-footer">
+    <button class="btn-continue" id="btn-continue-a" onclick="goToTeamB()" disabled>Complete Team A first</button>
+  </div>
+</div>
+
+<div class="screen" id="screen-players-b">
+  <div class="setup">
+    <div class="screen-hdr">
+      <button class="card-back" onclick="backToPlayersA()"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg><span class="back-label">Back</span></button>
+      <div class="card-hdr-title" id="label-b-hdr">Team B</div>
+      <div class="card-hdr-spacer"></div>
+    </div>
+    <div class="player-slot team-b-slot">
+      <div class="ps-label red" id="label-b"></div>
+      <div id="slot-b0"></div>
+      <div id="slot-b1"></div>
+    </div>
+  </div>
+  <div class="screen-footer">
+    <button class="btn-continue" id="btn-continue-b" onclick="reviewLineup()" disabled>Complete Team B first</button>
+  </div>
+</div>
+
+<div class="screen" id="screen-playoff">
+  <div class="setup">
+    <div class="screen-hdr">
+      <button class="card-back" onclick="backToPlayers()"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg><span class="back-label">Back</span></button>
+      <div class="card-hdr-title">Playing Off</div>
+      <div class="card-hdr-spacer"></div>
+    </div>
+    <div id="playoff-list"></div>
+    <div style="padding:0 14px 14px;">
+        <button class="btn-start" id="btn-start" onclick="startRound()">Start Round →</button>
+      </div>
+  </div>
+</div>
+
+
+
+<!-- â•â• SCORECARD SCREEN â•â• -->
+<div class="screen" id="screen-card">
+  <div>
+    <div class="ban-name" id="ban-na"></div>
+    <div class="ban-score green" id="ban-sa">0</div>
+    <div class="ban-detail" id="ban-da"></div>
+  </div>
+  <div class="ban-mid">
+    <div class="vs">vs</div>
+    <div class="dash">—</div>
+    <div style="font-size:9px;color:var(--muted);">11 pts total</div>
+  </div>
+  <div class="ban-right">
+    <div class="ban-name" id="ban-nb"></div>
+    <div class="ban-score red" id="ban-sb">0</div>
+    <div class="ban-detail" id="ban-db"></div>
+  </div>
+</div>
+
+<div class="sc-wrap">
+  <table class="sc" id="sc"></table>
+</div>
+
+<!-- Player Picker Drawer -->
+<div class="overlay" id="player-overlay" onclick="closePlayerPicker()">
+  <div class="drawer pp-drawer" onclick="event.stopPropagation()">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+      <div class="pp-who" id="pp-who"></div>
+      <button onclick="closePlayerPicker()" style="width:36px;height:36px;border-radius:50%;background:var(--off);border:none;font-size:20px;font-weight:700;color:var(--muted);cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;">✕</button>
+    </div>
+    <div class="sub-tabs" id="pp-tabs">
+      <div class="sub-tab active" id="pp-tab-roster" onclick="drawerTab('roster')">Roster</div>
+      <div class="sub-tab" id="pp-tab-club"   onclick="drawerTab('club')">Club Member</div>
+      <div class="sub-tab" id="pp-tab-guest"  onclick="drawerTab('guest')">Guest</div>
+    </div>
+    <div class="sub-body" id="pp-body"></div>
+  </div>
+</div>
+
+<!-- Score Entry Drawer -->
+<div class="overlay" id="overlay" onclick="maybeClose(event)">
+  <div class="drawer" onclick="event.stopPropagation()">
+    <div class="d-handle"></div>
+    <div class="d-who">Enter Score</div>
+    <div class="d-name" id="d-name"></div>
+    <div class="d-meta" id="d-meta"></div>
+    <div class="score-picker">
+      <button class="sp-btn sp-minus" onclick="adj(-1)">−</button>
+      <div class="sp-mid">
+        <div class="sp-score" id="d-score">4</div>
+        <div class="sp-label" id="d-label">Par</div>
+        <div class="sp-net"   id="d-net"></div>
+      </div>
+      <button class="sp-btn sp-plus" onclick="adj(1)">+</button>
+    </div>
+    <div class="d-actions">
+      <button class="da-clear" id="d-clear" onclick="clearScore()">Clear</button>
+      <button class="da-next"  id="d-next"  onclick="nextPl()"></button>
+    </div>
+  </div>
+</div>
+
+<div class="tally" id="tally-wrap">
+  <div style="font-size:10px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;">Match Points</div>
+  <div class="tg" id="tally"></div>
+  <button onclick="newRound()" style="display:block;width:100%;margin-top:12px;padding:12px;border-radius:10px;border:1.5px solid var(--border);background:var(--white);color:var(--muted);font-size:13px;font-weight:700;cursor:pointer;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg><span class="back-label">Back</span> New Round</button>
+</div>
+<!-- Course Handicap Info Popup -->
+<div id="chcp-info" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;align-items:center;justify-content:center;padding:14px;" onclick="toggleModal('chcp-info')">
+  <div style="background:#fff;border-radius:16px;padding:20px;max-width:360px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 8px 32px rgba(0,0,0,.2);" onclick="event.stopPropagation()">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+      <div style="width:28px;height:28px;border-radius:50%;background:var(--green);color:#fff;font-size:14px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;">?</div>
+      <div style="font-size:16px;font-weight:800;color:var(--text);flex:1;">Course Handicap</div>
+      <button onclick="toggleModal('chcp-info')" style="width:36px;height:36px;border-radius:50%;background:var(--off);border:none;font-size:18px;color:var(--muted);cursor:pointer;flex-shrink:0;">✕</button>
+    </div>
+    <p style="font-size:14px;color:var(--text);line-height:1.6;margin-bottom:12px;">
+      Your <b>Course Handicap</b> is the number of strokes you receive on a specific course and tee box. It is different from your <a onclick="event.stopPropagation();toggleModal('hi-info')" style="color:var(--green);font-weight:700;text-decoration:underline;cursor:pointer;">Handicap Index</a>.
+    </p>
+    <p style="font-size:14px;color:var(--text);line-height:1.6;margin-bottom:12px;">
+      It is calculated as:<br>
+      <span style="font-family:'DM Mono',monospace;font-size:12px;background:var(--off);padding:4px 8px;border-radius:6px;display:inline-block;margin-top:4px;">Index × (Slope ÷ 113) + (Rating − Par)</span>
+    </p>
+    <div style="background:var(--green-tint);border:1.5px solid var(--green);border-radius:10px;padding:10px 12px;margin-bottom:12px;">
+      <div style="font-size:12px;font-weight:800;color:var(--green);margin-bottom:5px;">9-Hole Play</div>
+      <div style="font-size:14px;color:var(--green);line-height:1.5;">Enter your Course Handicap for <b>9 holes</b> — not 18. Each nine at Nemadji has its own rating and slope, so your 9-hole course handicap will be different from your full 18-hole number.</div>
+    </div>
+    <div style="background:#f0d878;border:1.5px solid #c4861f;border-radius:10px;padding:10px 12px;margin-bottom:12px;">
+      <div style="font-size:12px;font-weight:800;color:var(--dark-amber);margin-bottom:5px;">Tee Box Dependent</div>
+      <div style="font-size:14px;color:var(--dark-amber);line-height:1.5;">Your Course Handicap changes depending on which tees you play. Always use the number from the tee box you are playing tonight — Black/White, White, etc.</div>
+    </div>
+    <p style="font-size:13px;color:var(--muted);line-height:1.5;margin-bottom:16px;">
+      Calculate yours using the USGA's official tool:<br>
+      <a href="https://www.ghin.com" target="_blank" style="color:var(--green);font-weight:700;text-decoration:none;">→ ghin.com</a>
+      — log in and your Course Handicap is calculated automatically for any course and tee box.
+    </p>
+    <button onclick="toggleModal('chcp-info')" style="width:100%;padding:14px;border-radius:10px;background:var(--green);color:#fff;font-size:15px;font-weight:800;border:none;cursor:pointer;min-height:48px;">Got it</button>
+  </div>
+</div>
+
+<!-- Handicap Index Info Popup -->
+<div id="hi-info" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:310;align-items:center;justify-content:center;padding:14px;" onclick="toggleModal('hi-info')">
+  <div style="background:#fff;border-radius:16px;padding:20px;max-width:360px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 8px 32px rgba(0,0,0,.2);" onclick="event.stopPropagation()">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+      <div style="width:28px;height:28px;border-radius:50%;background:var(--green);color:#fff;font-size:14px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;">?</div>
+      <div style="font-size:16px;font-weight:800;color:var(--text);flex:1;">Handicap Index</div>
+      <button onclick="toggleModal('hi-info')" style="width:36px;height:36px;border-radius:50%;background:var(--off);border:none;font-size:18px;color:var(--muted);cursor:pointer;flex-shrink:0;">✕</button>
+    </div>
+    <p style="font-size:14px;color:var(--text);line-height:1.6;margin-bottom:12px;">
+      Your <b>Handicap Index</b> is a portable number that represents your potential ability as a golfer. It's calculated by the USGA from your recent scores and is the same no matter where you play.
+    </p>
+    <p style="font-size:14px;color:var(--text);line-height:1.6;margin-bottom:12px;">
+      Think of it as your <i>"travel-ready"</i> handicap — you bring it with you to any course, and that course converts it into a Course Handicap based on its difficulty.
+    </p>
+    <div style="background:var(--green-tint);border:1.5px solid var(--green);border-radius:10px;padding:10px 12px;margin-bottom:12px;">
+      <div style="font-size:12px;font-weight:800;color:var(--green);margin-bottom:5px;">Index vs. Course Handicap</div>
+      <div style="font-size:14px;color:var(--green);line-height:1.5;">An Index of <b>12.4</b> might become a Course Handicap of <b>14</b> from the back tees, or <b>11</b> from the forwards. Same player, same Index — different strokes given.</div>
+    </div>
+    <p style="font-size:13px;color:var(--muted);line-height:1.5;margin-bottom:16px;">
+      Get your official Index through the USGA:<br>
+      <a href="https://www.ghin.com" target="_blank" style="color:var(--green);font-weight:700;text-decoration:none;">→ ghin.com</a>
+      — log in to see your current Handicap Index.
+    </p>
+    <button onclick="toggleModal('hi-info')" style="width:100%;padding:14px;border-radius:10px;background:var(--green);color:#fff;font-size:15px;font-weight:800;border:none;cursor:pointer;min-height:48px;">Got it</button>
+  </div>
+</div>
+
+<!-- Playing Off Info Popup -->
+<div id="playoff-info" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;align-items:center;justify-content:center;padding:14px;" onclick="toggleModal('playoff-info')">
+  <div style="background:#fff;border-radius:16px;padding:20px;max-width:360px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 8px 32px rgba(0,0,0,.2);" onclick="event.stopPropagation()">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+      <div style="width:28px;height:28px;border-radius:50%;background:var(--green);color:#fff;font-size:14px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;">?</div>
+      <div style="font-size:16px;font-weight:800;color:var(--text);flex:1;">Playing Off</div>
+      <button onclick="toggleModal('playoff-info')" style="width:36px;height:36px;border-radius:50%;background:var(--off);border:none;font-size:18px;color:var(--muted);cursor:pointer;flex-shrink:0;">✕</button>
+    </div>
+    <p style="font-size:14px;color:var(--text);line-height:1.6;margin-bottom:12px;">
+      In match play, the lowest-handicap player <b>plays off scratch</b> — they get no strokes. Everyone else receives the difference between their Course Handicap and the lowest one.
+    </p>
+    <div style="background:var(--green-tint);border:1.5px solid var(--green);border-radius:10px;padding:10px 12px;margin-bottom:12px;">
+      <div style="font-size:12px;font-weight:800;color:var(--green);margin-bottom:5px;">Example</div>
+      <div style="font-size:14px;color:var(--green);line-height:1.5;">If course handicaps are <b>3, 7, 9, 12</b>, the lowest is 3 — so they play off scratch. The others receive <b>4</b>, <b>6</b>, and <b>9</b> strokes respectively.</div>
+    </div>
+    <p style="font-size:13px;color:var(--muted);line-height:1.5;margin-bottom:16px;">
+      Strokes are allocated to the holes by stroke index — the hardest holes first.
+    </p>
+    <button onclick="toggleModal('playoff-info')" style="width:100%;padding:14px;border-radius:10px;background:var(--green);color:#fff;font-size:15px;font-weight:800;border:none;cursor:pointer;min-height:48px;">Got it</button>
+  </div>
+</div>
+
+<script>
+
+// ─── REAL NEMADJI COURSE DATA ─────────────────────────────────────────────────
+// Extracted from official Nemadji Golf Course scorecards
+const COURSES = {
+  E: {
+    name:'East Nine', short:'East', par:36,
+    // 9-hole ratings — from East/West card (Black/White combo = league default)
+    tees:{
+      'Black':       {slope:130, rating:35.9},
+      'Black/White': {slope:126, rating:34.8},  // league default Wed
+      'White':       {slope:120, rating:33.7},
+      'White/Green': {slope:112, rating:32.5},
+      'Green':       {slope:105, rating:31.2},
+    },
+    holes:[
+      {hole:1, par:4, hdcp:9 },
+      {hole:2, par:5, hdcp:3 },
+      {hole:3, par:3, hdcp:17},
+      {hole:4, par:4, hdcp:13},
+      {hole:5, par:4, hdcp:7 },
+      {hole:6, par:3, hdcp:15},
+      {hole:7, par:5, hdcp:1 },
+      {hole:8, par:4, hdcp:5 },
+      {hole:9, par:4, hdcp:11},
+    ]
+  },
+  W: {
+    name:'West Nine', short:'West', par:36,
+    tees:{
+      'Black':       {slope:130, rating:35.1},
+      'Black/White': {slope:124, rating:34.4},
+      'White':       {slope:118, rating:33.5},
+      'White/Green': {slope:109, rating:32.2},
+      'Green':       {slope:101, rating:31.1},
+    },
+    holes:[
+      {hole:10, par:4, hdcp:10},
+      {hole:11, par:5, hdcp:4 },
+      {hole:12, par:3, hdcp:6 },
+      {hole:13, par:4, hdcp:2 },
+      {hole:14, par:5, hdcp:18},
+      {hole:15, par:3, hdcp:14},
+      {hole:16, par:4, hdcp:8 },
+      {hole:17, par:4, hdcp:16},
+      {hole:18, par:4, hdcp:12},
+    ]
+  },
+  N: {
+    name:'North Nine', short:'North', par:36,
+    tees:{
+      'Black':       {slope:118, rating:35.0},
+      'Black/White': {slope:114, rating:34.0},
+      'White':       {slope:109, rating:33.2},
+      'White/Green': {slope:104, rating:32.0},
+      'Green':       {slope:95,  rating:30.5},
+    },
+    holes:[
+      {hole:1, par:4, hdcp:11},
+      {hole:2, par:5, hdcp:1 },
+      {hole:3, par:4, hdcp:5 },
+      {hole:4, par:4, hdcp:9 },
+      {hole:5, par:3, hdcp:15},
+      {hole:6, par:4, hdcp:13},
+      {hole:7, par:4, hdcp:7 },
+      {hole:8, par:5, hdcp:3 },
+      {hole:9, par:3, hdcp:17},
+    ]
+  },
+  S: {
+    name:'South Nine', short:'South', par:35,
+    tees:{
+      'Black':       {slope:118, rating:34.0},
+      'Black/White': {slope:114, rating:33.4},
+      'White':       {slope:110, rating:32.7},
+      'White/Green': {slope:104, rating:31.5},
+      'Green':       {slope:90,  rating:30.2},
+    },
+    holes:[
+      {hole:10, par:3, hdcp:16},
+      {hole:11, par:5, hdcp:2 },
+      {hole:12, par:3, hdcp:14},
+      {hole:13, par:4, hdcp:6 },
+      {hole:14, par:3, hdcp:18},
+      {hole:15, par:5, hdcp:4 },
+      {hole:16, par:4, hdcp:8 },
+      {hole:17, par:4, hdcp:10},
+      {hole:18, par:4, hdcp:12},
+    ]
+  }
+};
+
+const CLUB_MEMBERS = [{"name": "Brian Anderson", "hi": 16.3}, {"name": "Scott Anderson", "hi": 13.2}, {"name": "Robert Anseth", "hi": 28.4}, {"name": "Matt Archambault", "hi": 2.9}, {"name": "Scott Archambeau", "hi": 7.3}, {"name": "Paul Bachinski", "hi": 18.4}, {"name": "Tim Baczkiewicz", "hi": 17.1}, {"name": "Tyler Bailey", "hi": 11.1}, {"name": "Blaine Ballavance", "hi": 13.3}, {"name": "Troy Banks", "hi": 11.7}, {"name": "Bob Barto", "hi": 8.7}, {"name": "Dean Bauers", "hi": 11.3}, {"name": "Keith Berg", "hi": 4.2}, {"name": "Will Berglund", "hi": 13.6}, {"name": "Mark Bergren", "hi": 24.7}, {"name": "Brian Bergstedt", "hi": 14.8}, {"name": "Tyler Beste", "hi": 15.8}, {"name": "Chris Bishop", "hi": 7.2}, {"name": "Bob Blake", "hi": 12.8}, {"name": "Dan Blank", "hi": 9.0}, {"name": "Bryan Blazejak", "hi": 5.0}, {"name": "Eric Boles", "hi": 12.3}, {"name": "Rheace Boles", "hi": 5.6}, {"name": "Bill Bombich", "hi": 26.4}, {"name": "Jared Botten", "hi": 9.2}, {"name": "Tim Bradshaw", "hi": 11.3}, {"name": "Chad Breault", "hi": 8.7}, {"name": "Joel Broberg", "hi": 8.2}, {"name": "Jerry Broderson", "hi": 32.6}, {"name": "Anthony Bronson", "hi": 16.4}, {"name": "Chris Bronson", "hi": 10.0}, {"name": "Tony Bronson", "hi": 15.1}, {"name": "Tyler Bruns", "hi": 11.2}, {"name": "Graydon Buck", "hi": 11.5}, {"name": "Brandon Burd", "hi": 3.6}, {"name": "Jordan Butera", "hi": 7.1}, {"name": "Mike Butera", "hi": 5.6}, {"name": "Linda Cadotte", "hi": 24.6}, {"name": "John Cahill", "hi": 17.9}, {"name": "John Cahill Jr", "hi": 16.3}, {"name": "Tom Carlson", "hi": 22.1}, {"name": "Robert Chesser", "hi": 16.7}, {"name": "Paul Chialastri", "hi": 27.0}, {"name": "Allan Clark", "alt": "AJ Clark", "hi": 14.0}, {"name": "Troy Clark", "hi": 7.0}, {"name": "Brian Cole", "hi": 27.7}, {"name": "Robert Collard", "hi": 23.2}, {"name": "Scott Collins", "hi": 22.2}, {"name": "Bill Connolly", "hi": 20.4}, {"name": "Penny Cragin", "hi": 51.1}, {"name": "Brian Crawford", "hi": 0.1}, {"name": "Rick Curnow", "hi": 28.2}, {"name": "Arlette DeGrio", "hi": 40.0}, {"name": "Jon DeRoo", "hi": 20.2}, {"name": "Mark Dey", "hi": 19.2}, {"name": "Herbie Dillon", "hi": 5.4}, {"name": "Blake Donahue", "hi": 15.0}, {"name": "Trey Drougas", "hi": 26.3}, {"name": "Kiefer Eales", "hi": 6.0}, {"name": "Mike Eales", "hi": 11.3}, {"name": "Eileen Elden", "hi": 33.2}, {"name": "Curt Ellestad", "hi": 20.6}, {"name": "Wayne Erickson", "hi": 18.4}, {"name": "Tony Fedyn", "hi": 28.5}, {"name": "Ross Foro", "hi": 28.2}, {"name": "Andy Frank", "hi": 4.7}, {"name": "Dick Frank", "hi": 13.8}, {"name": "Adam Frase", "hi": 5.2}, {"name": "David Frye", "hi": 3.7}, {"name": "Steven Fudally", "hi": 18.9}, {"name": "Bradley Gangstad", "hi": 22.0}, {"name": "Tyrus Gangstad", "hi": 26.0}, {"name": "Troy Gehrmann", "hi": 13.1}, {"name": "Les Gibbs", "hi": 8.9}, {"name": "Terrry Glanville", "hi": 6.8}, {"name": "Darren Gordon", "hi": 16.6}, {"name": "Penny Graskey", "hi": 27.6}, {"name": "Jacob Grigsby", "hi": 7.3}, {"name": "Joe Gronlund", "hi": 13.0}, {"name": "Bruce Grover", "hi": 21.0}, {"name": "Gary Gulbrandson", "hi": 26.0}, {"name": "Kevin Gunderson", "hi": 11.4}, {"name": "John Gunnon", "hi": 22.1}, {"name": "John Hackensmith", "hi": 23.7}, {"name": "Dennis Hagen", "hi": 21.9}, {"name": "Reid Haglin", "hi": 15.7}, {"name": "Reagan Haley", "hi": 10.8}, {"name": "Scott Haller", "hi": 22.0}, {"name": "Larry Harness", "hi": 24.0}, {"name": "John Hashey", "hi": 10.9}, {"name": "Mark Haslerud", "hi": 15.4}, {"name": "Dustin Haugen", "hi": 13.7}, {"name": "Rob Hausauer", "hi": 17.0}, {"name": "Bob Henderson", "hi": 15.0}, {"name": "Cody Hendrickson", "hi": 18.0}, {"name": "Robert Hendrickson", "alt": "Rob Hendrickson", "hi": 8.8}, {"name": "Noah Henninger", "hi": 26.1}, {"name": "Kyle Herrick", "hi": 3.6}, {"name": "Cory Hesselgrave", "hi": 10.0}, {"name": "Matt Hinaus", "hi": 7.9}, {"name": "Barb Hoag", "hi": 26.5}, {"name": "Brian Hoff", "hi": 14.9}, {"name": "Nick Holt", "hi": 15.2}, {"name": "Allie Hom", "hi": 11.4}, {"name": "Luke Hom", "hi": 13.8}, {"name": "Christian Houle", "hi": 4.6}, {"name": "Brian Hubbard", "hi": 21.3}, {"name": "Jarrod Imhof", "hi": 21.2}, {"name": "David Isaacson", "hi": 1.8}, {"name": "John Isaacson", "hi": 17.2}, {"name": "Jim Jago", "hi": 22.1}, {"name": "Charlie Johnson", "hi": 7.1}, {"name": "Dave Johnson", "hi": 14.4}, {"name": "James Johnson", "hi": 19.6}, {"name": "Mike Johnson", "hi": 9.7}, {"name": "Scott Johnson", "hi": 10.0}, {"name": "Tim Johnson", "hi": 8.2}, {"name": "Tucker Johnson", "hi": 18.6}, {"name": "Casey Johnstone", "hi": 18.9}, {"name": "Kyle Jollymore", "hi": 13.6}, {"name": "john Jorgenson", "hi": 25.4}, {"name": "Mark Kaarto", "hi": 4.5}, {"name": "Jason Kalin", "hi": 4.9}, {"name": "Kyle Kantola", "hi": 19.5}, {"name": "Alex Kaske", "hi": 15.4}, {"name": "Chris Kaske", "hi": 14.7}, {"name": "Mike Katajamaki", "hi": 19.4}, {"name": "Mike Kelly", "hi": 35.0}, {"name": "Pat Kelly", "hi": 8.1}, {"name": "Bill Kero", "hi": 10.1}, {"name": "Chris Keur", "hi": 17.3}, {"name": "Lynn Kiesel", "hi": 28.9}, {"name": "Steve Kimmes", "hi": 22.8}, {"name": "Steve Knutson", "hi": 17.1}, {"name": "Eric Kolanek", "hi": 7.2}, {"name": "Chris Kolsky", "hi": 16.0}, {"name": "John Kontny", "hi": 21.4}, {"name": "George Korich", "hi": 26.9}, {"name": "Scott Krenzke", "hi": 18.8}, {"name": "Steve Kresal", "hi": 3.1}, {"name": "Derek Kurkinen", "hi": 20.4}, {"name": "Alan Kurtz", "hi": 20.0}, {"name": "Paul Kurtz", "hi": 8.3}, {"name": "Joseph Kutter", "hi": 30.1}, {"name": "Mike Kylmala", "hi": 16.2}, {"name": "Mark LaFlamme", "hi": 31.7}, {"name": "Chuck Lagesse", "hi": 20.3}, {"name": "Jeffrey Lane", "hi": 23.5}, {"name": "Jack Larsen Larsen", "alt": "Jack Larsen", "hi": 17.2}, {"name": "Dave Larson", "hi": 14.9}, {"name": "Lyn Larson", "hi": 27.7}, {"name": "Scott Larson", "hi": 18.2}, {"name": "Eddie Lattiak", "hi": 11.9}, {"name": "Ryan Lattiak", "hi": 7.7}, {"name": "Rick Lear", "hi": 11.1}, {"name": "Steve Ledin", "hi": 23.6}, {"name": "Tommy Ledin", "hi": 16.3}, {"name": "Tyler Ledin", "hi": 3.1}, {"name": "Tony Leikvoll", "hi": 6.0}, {"name": "Terry Leonidas", "hi": 14.8}, {"name": "Denis Leschishin", "hi": 30.6}, {"name": "Blake Leslie", "hi": 25.2}, {"name": "Travis Leslie", "hi": 12.3}, {"name": "Christel Lewis", "hi": 29.2}, {"name": "Dan Lillegaard", "hi": 14.0}, {"name": "Mike Lindberg", "alt": "Michael Lindberg", "hi": 23.5}, {"name": "Bob Lindquist", "hi": 17.3}, {"name": "Jordan Lings", "hi": 7.2}, {"name": "John Lofstuen", "hi": 22.5}, {"name": "Jason Lundgren", "hi": 8.1}, {"name": "Dave Lundquist", "hi": 11.0}, {"name": "Jameson Lundquist", "hi": 17.0}, {"name": "Paul Lundquist", "hi": 20.9}, {"name": "Bob Maclean", "hi": 19.7}, {"name": "Christy Mahoney", "hi": 41.5}, {"name": "Jeff Maki", "hi": 21.3}, {"name": "Rick Malyuk", "hi": 37.1}, {"name": "Jeff Manion", "hi": 15.2}, {"name": "Ken Matheson", "hi": 19.7}, {"name": "Ray McIvor", "hi": 13.0}, {"name": "Alex Meehan", "hi": 9.9}, {"name": "Rob Mihalek", "hi": 0.6}, {"name": "Nick Milinkovich", "hi": 5.8}, {"name": "Maryjo Miller", "hi": 23.2}, {"name": "Steven Miller", "alt": "Steve Miller", "hi": 19.6}, {"name": "Travis Miller", "hi": 14.9}, {"name": "Carson Milligan", "hi": 14.6}, {"name": "Michael Mills", "hi": 22.0}, {"name": "Russell Moore", "hi": 6.9}, {"name": "Steve Mosack", "hi": 15.4}, {"name": "Tom Mulconrey", "hi": 4.9}, {"name": "Jon Myhre", "hi": 30.8}, {"name": "Brian Nelson", "hi": 13.6}, {"name": "Dick Nelson", "hi": 21.1}, {"name": "Evan Nelson", "hi": 8.8}, {"name": "Ray Nelson", "hi": 15.5}, {"name": "Nathan Nesgoda", "alt": "Nate Nesgoda", "hi": 25.1}, {"name": "Mike Nilsen", "hi": 20.0}, {"name": "Will Norman", "hi": 17.0}, {"name": "Jeanette Nyquist", "hi": 32.5}, {"name": "Justin O'Connell", "hi": 18.8}, {"name": "Galen Okerlund", "hi": 22.0}, {"name": "Beth Olson", "hi": 38.6}, {"name": "Kathryn Olson", "hi": 29.1}, {"name": "Paul Olson", "hi": 26.7}, {"name": "Taylor Olson", "hi": 1.4}, {"name": "Violet Olson", "hi": 29.4}, {"name": "Ryan Ozan", "hi": 10.6}, {"name": "Terry Paine", "hi": 9.9}, {"name": "Jason Paquette", "hi": 25.3}, {"name": "Amy Patenaude", "hi": 6.8}, {"name": "Corey Pavlich", "hi": 11.3}, {"name": "Jim Peck", "hi": 17.1}, {"name": "Corwin Pederson", "hi": 18.3}, {"name": "Matt Perrault", "hi": 13.3}, {"name": "Eric Petcoff", "hi": 18.0}, {"name": "Dennis W Peters", "hi": 29.5}, {"name": "John Peterson", "hi": 1.7}, {"name": "Mark Peterson", "hi": 8.3}, {"name": "Scott Peterson", "hi": 22.1}, {"name": "John Pettingill", "hi": 6.0}, {"name": "Ryan Pettingill", "hi": 0.8}, {"name": "Todd Pleski", "hi": 14.9}, {"name": "Tyler Plunkett", "hi": 6.2}, {"name": "Ryan Pursi", "hi": 17.1}, {"name": "Adam Quam", "hi": 23.7}, {"name": "David Quam", "hi": 13.5}, {"name": "Matt Quam", "hi": 18.9}, {"name": "Andrew Quick", "hi": 4.5}, {"name": "Stephen Raboin", "hi": 22.8}, {"name": "Paul Radig", "hi": 10.1}, {"name": "Andy Raunio", "hi": 9.7}, {"name": "Michael Raunio", "hi": 1.9}, {"name": "Brian Raygor", "hi": 17.5}, {"name": "Brodie Raygor", "hi": 32.7}, {"name": "Shari Raymond", "hi": 40.6}, {"name": "Max Reed", "hi": 21.5}, {"name": "Justin Reid", "hi": 12.3}, {"name": "Michele Rieder", "hi": 24.9}, {"name": "Adam Riesland", "hi": 35.2}, {"name": "John Rochon", "hi": 5.0}, {"name": "Tina Rogers", "hi": 23.1}, {"name": "Jeffery Rop", "alt": "Jeff Rop", "hi": 10.7}, {"name": "Andy Ross", "hi": 23.9}, {"name": "Jeff Ryss", "hi": 13.0}, {"name": "Steve Sanford", "hi": 12.6}, {"name": "Steve Santori", "hi": 15.1}, {"name": "Burke Scarbrough", "hi": 26.6}, {"name": "Luke Scholand", "hi": 17.8}, {"name": "Vicky Schold", "hi": 18.1}, {"name": "Doug Score", "hi": 27.1}, {"name": "Austin Sears", "hi": 6.3}, {"name": "Mike Shea", "hi": 13.3}, {"name": "Eric Siljendahl", "hi": 3.8}, {"name": "Mark Sitek", "hi": 3.0}, {"name": "Andrew Smith", "hi": 13.9}, {"name": "Steve Smith", "hi": 13.3}, {"name": "Tim Smith", "hi": 5.3}, {"name": "Matt Solberg", "hi": 9.3}, {"name": "Brian Sorensen", "hi": 11.6}, {"name": "Shawn Sorensen", "hi": 12.6}, {"name": "Tom Sorensen", "hi": 8.0}, {"name": "Robert St George", "hi": 25.4}, {"name": "Chad Stariha", "hi": 14.4}, {"name": "Jon Stephenson", "hi": 7.4}, {"name": "Brian Stolarzyk", "hi": 13.0}, {"name": "Joe Stolzman", "hi": 15.8}, {"name": "Nick Strand", "hi": 4.9}, {"name": "Andy Strom", "hi": 17.5}, {"name": "Brady Swanson", "hi": 23.2}, {"name": "Grady Tank", "hi": 37.5}, {"name": "Ron Thompson", "hi": 16.0}, {"name": "Dean Thrun", "hi": 14.7}, {"name": "Jim Tomczak", "hi": 14.2}, {"name": "Loren Trolson", "hi": 28.7}, {"name": "Dennis Tyson", "hi": 16.7}, {"name": "Randy Underthun", "hi": 16.0}, {"name": "Nolan VanDamme", "hi": 14.9}, {"name": "Mark Vaughan", "hi": 16.3}, {"name": "John Verrill", "hi": 27.1}, {"name": "Dan Walker", "hi": 0.4}, {"name": "Jarrod Walker", "hi": 20.7}, {"name": "Scott Walker", "hi": 6.5}, {"name": "Brian Wallin", "hi": 7.1}, {"name": "John Wallin", "hi": 25.0}, {"name": "Scott Wallin", "hi": 11.0}, {"name": "Tim Walsh", "hi": 20.7}, {"name": "Joe Walstrom", "hi": 5.4}, {"name": "Todd Wick", "hi": 16.3}, {"name": "Tom Wildes", "hi": 27.3}, {"name": "Skyler Wilkin", "hi": 2.4}, {"name": "Steve Willis", "hi": 13.9}, {"name": "Bill Wills", "hi": 20.4}, {"name": "Michael Wines", "hi": 23.2}, {"name": "Arthur Woodman", "hi": 32.7}, {"name": "Ken Wright", "hi": 39.2}];
+
+// ─── REAL 2025 WEDNESDAY BEST BALL ROSTERS ───────────────────────────────────
+const TEAM_ROSTER = {
+  D1: [
+    { team:"Power Fades",        captain:"Jeff Rop",       players:[{name:"Jeff Rop",hi:null},{name:"Burke Scarbrough",hi:null},{name:"Nate Nesgoda",hi:null}] },
+    { team:"Buffalo House",      captain:"Tim Johnson",    players:[{name:"Tim Johnson",hi:null},{name:"Nick Milinkovich",hi:null}] },
+    { team:"Capital Accounting", captain:"Stephen Raboin", players:[{name:"Stephen Raboin",hi:null},{name:"John Verrill",hi:null},{name:"Michael Lindberg",hi:null},{name:"Henry Olson",hi:null}] },
+    { team:"PBR",                captain:"Daniel Carlson", players:[{name:"Daniel Carlson",hi:null},{name:"Scott Wishart",hi:null},{name:"Grant Kleven",hi:null}] },
+    { team:"Reed Rentals",       captain:"Tucker Johnson", players:[{name:"Tucker Johnson",hi:null},{name:"Kaden Kimmes",hi:null},{name:"Max Reed",hi:null},{name:"Dylan Ronchi",hi:null}] },
+    { team:"Rick Malyuk",        captain:"Rick Malyuk",    players:[{name:"Rick Malyuk",hi:null},{name:"Herbie Dillon",hi:5.4},{name:"Joey Cummings",hi:null},{name:"Ike Pederson",hi:null}] },
+    { team:"Flippin Birds",      captain:"Eddie Lattiak",  players:[{name:"Eddie Lattiak",hi:null},{name:"Ryan Lattiak",hi:null},{name:"Scott Walker",hi:null}] },
+    { team:"Tradesmen",          captain:"Joel Broberg",   players:[{name:"Joel Broberg",hi:8.2},{name:"Justin O'Connell",hi:null},{name:"Cory Hasselgrave",hi:null},{name:"Weston Morris",hi:null}] },
+    { team:"Konkler & Rankila",  captain:"Jarid Rankila",  players:[{name:"Jarid Rankila",hi:null},{name:"Paul Konkler",hi:null}] },
+    { team:"Mullets",            captain:"Brian Stolarczyk",players:[{name:"Brian Stolarczyk",hi:null},{name:"Bob Henderson",hi:null}] },
+    { team:"Bulldog Pizza",      captain:"Jack Bursack",   players:[{name:"Jack Bursack",hi:null},{name:"Ken Wright",hi:null}] },
+    { team:"Grip It & Sip It",   captain:"Seth Pennington",players:[{name:"Seth Pennington",hi:null},{name:"Todd Wick",hi:null},{name:"Ryan Wick",hi:null},{name:"Scott Gordon",hi:null}] },
+    { team:'Smokin\u2019 Boles',      captain:"Eric Boles",     players:[{name:"Eric Boles",hi:12.3},{name:"Rheace Boles",hi:5.6},{name:"Caleb Kilroy",hi:null}] },
+    { team:"Dennison",           captain:"David Dennison", players:[{name:"David Dennison",hi:null},{name:"Ken Leivisha",hi:null}] },
+    { team:"B.R.B",              captain:"Brian Hoff",     players:[{name:"Brian Hoff",hi:null},{name:"Ray Nelson",hi:null},{name:"Brad Ballantine",hi:null},{name:"Sean Hoff",hi:null}] },
+    { team:"BeGe",               captain:"Graydon Buck",   players:[{name:"Graydon Buck",hi:11.5},{name:"Eric Boles",hi:12.3},{name:"Brent Theisen",hi:null}] },
+  ],
+  D2: [
+    { team:"Johnson Insurance",  captain:"Jeff Coenen",    players:[{name:"Jeff Coenen",hi:null},{name:"Mark Peterson",hi:null},{name:"Steve Micken",hi:null}] },
+    { team:"Birds Bar",          captain:"Chris Kaske",    players:[{name:"Chris Kaske",hi:null},{name:"John Heinen",hi:null},{name:"Matt Hinaus",hi:null}] },
+    { team:"Fudally Photo",      captain:"Steven Fudally", players:[{name:"Steven Fudally",hi:18.9},{name:"Jarrod Imhof",hi:null},{name:"Andy Saari",hi:null},{name:"Dennis Hagen",hi:null},{name:"Dale Olson",hi:null}] },
+    { team:"Walstrom Heating",   captain:"Joe Walstrom",   players:[{name:"Joe Walstrom",hi:null},{name:"Dick Nelson",hi:null},{name:"Brad Theien",hi:null},{name:"Evan Nelson",hi:null}] },
+    { team:"Gin & Bomb It",      captain:"Larry Harness",  players:[{name:"Larry Harness",hi:null},{name:"AJ Clark",hi:null},{name:"Chad Stariha",hi:null},{name:"Jordan Lings",hi:null}] },
+    { team:"Norman's East",      captain:"Terry Leonidas", players:[{name:"Terry Leonidas",hi:null},{name:"Mark Haslerud",hi:null},{name:"Blake Woodson",hi:null}] },
+    { team:"Bernicks",           captain:"Mike Butera",    players:[{name:"Mike Butera",hi:5.6},{name:"Jordan Butera",hi:7.1},{name:"Nick Strand",hi:null},{name:"Taylor Olson",hi:null},{name:"Tyler Bailey",hi:11.1},{name:"Matt Archambault",hi:2.9}] },
+    { team:"Detail & Dash",      captain:"Mike Eales",     players:[{name:"Mike Eales",hi:11.3},{name:"Rob Hendrickson",hi:null}] },
+    { team:"Mr. D's",            captain:"Brian Nelson",   players:[{name:"Brian Nelson",hi:null},{name:"Dave Johnson",hi:null}] },
+    { team:"Amnicanabi",         captain:"Will Norman",    players:[{name:"Will Norman",hi:null},{name:"Jeff Williams",hi:null},{name:"Wayne Erickson",hi:18.4}] },
+    { team:"Northern Growlers",  captain:"Bob Lindquist",  players:[{name:"Bob Lindquist",hi:null},{name:"Bob MacLean",hi:null},{name:"Scott Laven",hi:null}] },
+    { team:"OBG's",              captain:"Jim Peck",       players:[{name:"Jim Peck",hi:null},{name:"Scott Peterson",hi:null},{name:"Steve Miller",hi:null}] },
+    { team:"PowerHouse",         captain:"Adam Frase",     players:[{name:"Adam Frase",hi:5.2},{name:"Luke Hom",hi:null},{name:"Trevor Seely",hi:null},{name:"Adam Salo",hi:null},{name:"Ryan Ozan",hi:null}] },
+    { team:"Charter",            captain:"Tim Baczkiewicz",players:[{name:"Tim Baczkiewicz",hi:17.1},{name:"Ron Thompson",hi:null},{name:"Oscar Vandenbergh",hi:null}] },
+    { team:"Captain Jacks",      captain:"Jack Larsen",    players:[{name:"Jack Larsen",hi:null},{name:"Bill Kero",hi:null},{name:"Tom Kero",hi:null},{name:"Dennis Kiesel",hi:null},{name:"Justin Reid",hi:null}] },
+    { team:"Slice & Dice",       captain:"Alex Kaske",     players:[{name:"Alex Kaske",hi:null},{name:"Carson Milligan",hi:null},{name:"Cainen Raivala",hi:null}] },
+  ]
+};
+
+// ─── MATCH DATA — Demo: Smokin Boles vs Bernicks ────────────────────────────
+const MATCH = {
+  week: 1, date: 'May 14',
+  courseKey: 'E',
+  tee: 'Black/White',
+  teamA: { name: 'Smokin2019 Boles' },
+  teamB: { name: 'Bernicks' },
+  players: [
+    { name: 'Eric Boles',    hi: 12.3, team: 'A' },
+    { name: 'Rheace Boles',  hi: 5.6,  team: 'A' },
+    { name: 'Mike Butera',   hi: 5.6,  team: 'B' },
+    { name: 'Jordan Butera', hi: 7.1,  team: 'B' },
+  ]
+};
+
+// ─── MATCH DATA ───────────────────────────────────────────────────────────────
+// In production this comes from the schedule. For demo, hardcoded.
+
+
+// ─── SCORING ENGINE ───────────────────────────────────────────────────────────
+function getCoursHcps() {
+  // Solo slots return null so they don't pollute lowCHcp / strokesGiven math
+  return MATCH.players.map(p => p.isSolo ? null : Math.round(Number(p.hi)||0));
+}
+function lowCHcp() {
+  const real = getCoursHcps().filter(v => v !== null);
+  return real.length ? Math.min(...real) : 0;
+}
+function strokesGiven(pi, hole) {
+  if (MATCH.players[pi].isSolo) return 0;
+  const chcps = getCoursHcps();
+  const real  = chcps.filter(v => v !== null);
+  const lhcp  = Math.min(...real);
+  const diff  = Math.max(0, chcps[pi] - lhcp);
+  const base  = Math.floor(diff / 9);
+  const extra = hole.hdcp <= (diff % 9) ? 1 : 0;
+  const s     = base + extra;
+  return hole.par === 3 ? Math.min(s, 1) : s;
+}
+
+function calcMatch() {
+  const course = COURSES[MATCH.courseKey];
+  let tA=0, tB=0;
+  const hr = course.holes.map(h => {
+    const nets = MATCH.players.map((p, pi) => {
+      const g = scores[pi][h.hole];
+      return g === null ? null : g - strokesGiven(pi, h);
+    });
+    const best = (i1,i2) => { const v=[nets[i1],nets[i2]].filter(n=>n!==null); return v.length?Math.min(...v):null; };
+    const a=best(0,1), b=best(2,3);
+    let res='incomplete', pA=0, pB=0;
+    if (a!==null && b!==null) {
+      if (a<b){pA=1;res='A';} else if(b<a){pB=1;res='B';} else{pA=pB=.5;res='tie';}
+    }
+    tA+=pA; tB+=pB;
+    return {hole:h.hole,res,pA,pB,nets};
+  });
+  const tn = idxs => {
+    let t=0,any=false;
+    for(const pi of idxs) for(const h of course.holes){
+      const g=scores[pi][h.hole];
+      if(g!==null){t+=g-strokesGiven(pi,h);any=true;}
+    }
+    return any?t:null;
+  };
+  const nA=tn([0,1]),nB=tn([2,3]);
+  // Solo teams forfeit both medal points
+  const aSolo = MATCH.players[0].isSolo || MATCH.players[1].isSolo;
+  const bSolo = MATCH.players[2].isSolo || MATCH.players[3].isSolo;
+  let lA=0,lB=0,lr='incomplete';
+  if(aSolo && !bSolo){ lB=2; lr='B'; }
+  else if(bSolo && !aSolo){ lA=2; lr='A'; }
+  else if(aSolo && bSolo){ lr='tie'; }
+  else if(nA!==null&&nB!==null){
+    if(nA<nB){lA=2;lr='A';}else if(nB<nA){lB=2;lr='B';}else{lA=lB=1;lr='tie';}
+  }
+  return {hr,tA,tB,lA,lB,lr,nA,nB,totA:tA+lA,totB:tB+lB};
+}
+
+// Score styling helpers
+function sCls(g,par){const d=g-par;if(d<=-2)return'eagle';if(d===-1)return'birdie';if(d===0)return'par';if(d===1)return'bogey';if(d===2)return'double';return'triple';}
+function sCol(g,par){const d=g-par;if(d<=-2)return'var(--gold)';if(d===-1)return'var(--green)';if(d===0)return'var(--text)';if(d===1)return'var(--gray)';return'var(--red)';}
+function sLbl(g,par){const d=g-par;if(d<=-2)return'Eagle \uD83E\uDD85';if(d===-1)return'Birdie \uD83D\uDC26';if(d===0)return'Par';if(d===1)return'Bogey';if(d===2)return'Double';return'+'+d;}
+function cCls(g,par){const d=g-par;if(d<=-2)return'c-ea';if(d===-1)return'c-bi';if(d===0)return'c-pa';if(d===1)return'c-bo';return'c-db';}
+function nCls(net,par){const d=net-par;if(d<=-2)return'ea';if(d===-1)return'bi';if(d===1)return'bo';if(d>=2)return'db';return'';}
+
+// ─── STATE ────────────────────────────────────────────────────────────────────
+const course = () => COURSES[MATCH.courseKey];
+const scores = MATCH.players.map(()=>{
+  const s={};
+  Object.values(COURSES).forEach(c=>c.holes.forEach(h=>{s[h.hole]=null;}));
+  return s;
+});
+
+// ─── RENDER ───────────────────────────────────────────────────────────────────
+function render() {
+  const m = calcMatch();
+  const c = course();
+
+  document.getElementById('hdr-match').textContent = `${MATCH.teamA.name} vs ${MATCH.teamB.name}`;
+  document.getElementById('hdr-info').textContent  = `${c.name} · ${MATCH.tee} · W${MATCH.week} · ${MATCH.date}`;
+  document.getElementById('ban-na').textContent  = MATCH.teamA.name;
+  document.getElementById('ban-nb').textContent  = MATCH.teamB.name;
+  document.getElementById('ban-sa').textContent  = m.totA;
+  document.getElementById('ban-sb').textContent  = m.totB;
+  document.getElementById('ban-da').textContent  = `${m.tA} hole + ${m.lA} net`;
+  document.getElementById('ban-db').textContent  = `${m.tB} hole + ${m.lB} net`;
+
+  const tbl   = document.getElementById('sc');
+  const holes = c.holes;
+  tbl.innerHTML = '';
+
+  // Header
+  const thead=document.createElement('thead');
+  let tr=document.createElement('tr');
+  let th=document.createElement('th');th.className='rhdr';th.textContent='';tr.appendChild(th);
+  holes.forEach(h=>{th=document.createElement('th');th.textContent=h.hole;tr.appendChild(th);});
+  th=document.createElement('th');th.className='totcol';th.textContent='TOT';tr.appendChild(th);
+  thead.appendChild(tr);tbl.appendChild(thead);
+
+  const tbody=document.createElement('tbody');
+
+  // Par row
+  tr=document.createElement('tr');tr.className='row-par';
+  let td=document.createElement('td');td.className='rhdr';td.textContent='Par';tr.appendChild(td);
+  let parTot=0;
+  holes.forEach(h=>{td=document.createElement('td');td.textContent=h.par;parTot+=h.par;tr.appendChild(td);});
+  td=document.createElement('td');td.className='totcol';td.textContent=parTot;tr.appendChild(td);
+  tbody.appendChild(tr);
+
+  // Hdcp row
+  tr=document.createElement('tr');tr.className='row-hdcp';
+  td=document.createElement('td');td.className='rhdr';td.textContent='Hdcp';tr.appendChild(td);
+  holes.forEach(h=>{td=document.createElement('td');td.textContent=h.hdcp;tr.appendChild(td);});
+  td=document.createElement('td');td.className='totcol';td.textContent='';tr.appendChild(td);
+  tbody.appendChild(tr);
+
+  // Players
+  const chcps = getCoursHcps();
+  const real = chcps.filter(v => v !== null);
+  const lhcp = real.length ? Math.min(...real) : 0;
+
+  let sepRendered = false;
+  for(let pi=0;pi<4;pi++){
+    const p=MATCH.players[pi];
+    if(p.isSolo) continue;  // skip solo slots — no row in the scorecard
+    const isA=p.team==='A';
+    const tcls=isA?'ta':'tb';
+
+    // Team separator before the first team-B row we render
+    if(!isA && !sepRendered){
+      tr=document.createElement('tr');tr.className='row-sep';
+      td=document.createElement('td');td.colSpan=holes.length+2;
+      td.style.cssText=`background:var(--red);height:4px;padding:0;`;
+      tr.appendChild(td);tbody.appendChild(tr);
+      sepRendered = true;
+    }
+
+    // Gross row
+    tr=document.createElement('tr');tr.className=`row-gross ${tcls}`;
+    td=document.createElement('td');td.className='rhdr';
+    const pdiv=document.createElement('div');
+    pdiv.className='pcell';
+    const chcp=chcps[pi];
+    const playingOff=Math.max(0,chcp-lhcp);
+    const poLabel=playingOff===0?'<span class="po-scratch">scratch ⛳</span>':`+${playingOff}`;
+    pdiv.innerHTML=`<div class="pname">${p.name.split(' ')[0]}</div><div class="phcp">CH ${chcp} · ${poLabel}</div>`;
+    td.appendChild(pdiv);tr.appendChild(td);
+
+    let gTot=0,hasAny=false;
+    holes.forEach(h=>{
+      td=document.createElement('td');
+      const cell=document.createElement('div');cell.className='score-cell';
+      cell.onclick=()=>openDrawer(pi,h.hole);
+      const g=scores[pi][h.hole];
+      const str=strokesGiven(pi,h);
+      // Add stroke indicator class
+      if(str===1) cell.classList.add('s1');
+      else if(str>=2) cell.classList.add('s2');
+      const circle=document.createElement('div');
+      if(g!==null){
+        circle.className=`gc ${sCls(g,h.par)}`;circle.textContent=g;
+        gTot+=g;hasAny=true;
+        cell.appendChild(circle);
+      } else {
+        cell.classList.add('needs-score');
+        circle.className='gc empty';
+        circle.innerHTML=`<span style="width:6px;height:6px;border-radius:50%;background:#c4b884;display:block;"></span>`;
+        cell.appendChild(circle);
+      }
+      td.appendChild(cell);tr.appendChild(td);
+    });
+    td=document.createElement('td');td.className=`totcol ${isA?'green':'red'}`;td.textContent=hasAny?gTot:'—';tr.appendChild(td);
+    tbody.appendChild(tr);
+
+    // Net row
+    tr=document.createElement('tr');tr.className='row-net';
+    td=document.createElement('td');td.className='rhdr';td.style.cssText='font-size:9px;color:var(--muted);font-weight:500;';td.textContent='Net';tr.appendChild(td);
+    let nTot=0;
+    holes.forEach(h=>{
+      td=document.createElement('td');
+      const g=scores[pi][h.hole];
+      if(g!==null){const net=g-strokesGiven(pi,h);nTot+=net;const sp=document.createElement('span');sp.className=`nv ${nCls(net,h.par)}`;sp.textContent=net;td.appendChild(sp);}
+      tr.appendChild(td);
+    });
+    td=document.createElement('td');td.className='totcol';td.style.fontSize='11px';td.textContent=hasAny?nTot:'—';tr.appendChild(td);
+    tbody.appendChild(tr);
+  }
+
+  // Points row
+  tr=document.createElement('tr');tr.className='row-pts';
+  td=document.createElement('td');td.className='rhdr';td.style.cssText='font-size:9px;color:var(--muted);font-weight:600;';td.textContent='Pts';tr.appendChild(td);
+  let cumA=0,cumB=0;
+  holes.forEach(h=>{
+    td=document.createElement('td');
+    const r=m.hr.find(x=>x.hole===h.hole);
+    if(r&&r.res!=='incomplete'){
+      const cls=r.res==='A'?'pta':r.res==='B'?'ptb':'ptt';
+      td.innerHTML=`<span class="${cls}">${r.res==='tie'?'½':'1'}</span>`;
+      cumA+=r.pA;cumB+=r.pB;
+    }
+    tr.appendChild(td);
+  });
+  td=document.createElement('td');td.className='totcol';td.style.fontSize='11px';
+  td.innerHTML=`<span class="pta">${cumA}</span><span style="color:var(--border);margin:0 2px;">·</span><span class="ptb">${cumB}</span>`;
+  tr.appendChild(td);tbody.appendChild(tr);
+
+  tbl.appendChild(tbody);
+  renderTally(m);
+}
+
+function renderTally(m){
+  const t=document.getElementById('tally');
+  t.innerHTML='';
+  const mk=(cls,html)=>{const d=document.createElement('div');d.className=cls;d.innerHTML=html;return d;};
+
+  const hdr=document.createElement('div');hdr.className='tg-row hdr';
+  hdr.appendChild(mk('','Category'));
+  hdr.appendChild(mk('tga',MATCH.teamA.name.split(' ')[0]));
+  hdr.appendChild(mk('tgb',MATCH.teamB.name.split(' ')[0]));
+  t.appendChild(hdr);
+
+  const rows=[
+    {lbl:'Hole Points (9)', a:m.tA, b:m.tB, w:m.tA>m.tB?'A':m.tB>m.tA?'B':''},
+    {lbl:`Low Net (2)${m.nA!==null?` · ${m.nA} vs ${m.nB}`:''}`, a:m.lA||'—', b:m.lB||'—', w:m.lr==='A'?'A':m.lr==='B'?'B':''},
+  ];
+  rows.forEach(row=>{
+    const r=document.createElement('div');r.className='tg-row';
+    r.appendChild(mk('',row.lbl));
+    r.appendChild(mk('tga'+(row.w==='A'?' tgbig':''),`<span style="${row.w!=='A'?'color:var(--muted);font-weight:500;':''}">${row.a}</span>`));
+    r.appendChild(mk('tgb'+(row.w==='B'?' tgbig':''),`<span style="${row.w!=='B'?'color:var(--muted);font-weight:500;':''}">${row.b}</span>`));
+    t.appendChild(r);
+  });
+  const tot=document.createElement('div');tot.className='tg-row tot';
+  tot.appendChild(mk('','Total (out of 11)'));
+  tot.appendChild(mk('tga tgbig',`${m.totA}`));
+  tot.appendChild(mk('tgb tgbig',`${m.totB}`));
+  t.appendChild(tot);
+}
+
+// ─── DRAWER ───────────────────────────────────────────────────────────────────
+let D={pi:0,hole:0,val:0};
+
+function openDrawer(pi,holeNum){
+  const h=course().holes.find(x=>x.hole===holeNum);
+  const g=scores[pi][holeNum];
+  D={pi,hole:holeNum,val:g!==null?g:h.par};
+  const p=MATCH.players[pi];
+  const str=strokesGiven(pi,h);
+  const chcps=getCoursHcps();
+  document.getElementById('d-name').textContent=p.name;
+  document.getElementById('d-meta').textContent=
+    `Hole ${holeNum} · Par ${h.par} · Course Hdcp ${chcps[pi]}${str>0?' · '+str+' stroke'+(str>1?'s':''):' · No strokes'}`;
+  document.getElementById('d-clear').style.display=g!==null?'block':'none';
+  // Find next non-solo player to determine isLast / label
+  let nextPi=pi+1;
+  while(nextPi<4 && MATCH.players[nextPi].isSolo) nextPi++;
+  const isLast=nextPi>=4;
+  const nb=document.getElementById('d-next');
+  nb.textContent=isLast?'Done ✓':`Next: ${MATCH.players[nextPi].name.split(' ')[0]} →`;
+  nb.className='da-next'+(isLast?' done':'');
+  updateDrawer();
+  document.getElementById('overlay').classList.add('open');
+}
+
+function updateDrawer(){
+  const h=course().holes.find(x=>x.hole===D.hole);
+  const str=strokesGiven(D.pi,h);
+  const net=D.val-str;
+  const col=sCol(D.val,h.par);
+  document.getElementById('d-score').textContent=D.val;
+  document.getElementById('d-score').style.color=col;
+  document.getElementById('d-label').textContent=sLbl(D.val,h.par);
+  document.getElementById('d-label').style.color=col;
+  document.getElementById('d-net').textContent=`Net ${net} · ${sLbl(net,h.par)}`;
+}
+
+function adj(dir){
+  D.val=Math.max(1,Math.min(15,D.val+dir));
+  scores[D.pi][D.hole]=D.val;
+  document.getElementById('d-clear').style.display='block';
+  updateDrawer();render();saveRound();
+}
+function clearScore(){
+  scores[D.pi][D.hole]=null;
+  D.val=course().holes.find(x=>x.hole===D.hole).par;
+  document.getElementById('d-clear').style.display='none';
+  updateDrawer();render();saveRound();
+}
+function nextPl(){
+  if(scores[D.pi][D.hole]===null) scores[D.pi][D.hole]=D.val;
+  render();
+  // Find next non-solo player
+  let next=D.pi+1;
+  while(next<4 && MATCH.players[next].isSolo) next++;
+  if(next<4) openDrawer(next,D.hole);
+  else { document.getElementById('overlay').classList.remove('open'); render(); }
+}
+function maybeClose(e){if(e.target===document.getElementById('overlay'))document.getElementById('overlay').classList.remove('open');}
+
+function toggleModal(id){
+  const el=document.getElementById(id);
+  el.style.display=el.style.display==='flex'?'none':'flex';
+}
+
+function renderPlayoffPreview(){
+  const card=document.getElementById('screen-playoff');
+  const list=document.getElementById('playoff-list');
+  const p=S.players;
+  const slotOk = s => (s.name && s.chcp!==null) || s.isSolo;
+  const allOk = slotOk(p.A[0]) && slotOk(p.A[1]) && slotOk(p.B[0]) && slotOk(p.B[1]);
+  if(!allOk||!S.match){list.innerHTML='';return;}
+
+  // Only include real players in the playing-off list
+  const all=[];
+  ['A','B'].forEach(team=>{
+    [0,1].forEach(idx=>{
+      const pp=p[team][idx];
+      if(!pp.isSolo) all.push({team,name:pp.name,ch:Math.round(pp.chcp)});
+    });
+  });
+  const low=Math.min(...all.map(x=>x.ch));
+  const teamSolo={A:p.A[0].isSolo||p.A[1].isSolo, B:p.B[0].isSolo||p.B[1].isSolo};
+
+  const rows=all.map(x=>{
+    const strokes=Math.max(0,x.ch-low);
+    const isScratch=strokes===0;
+    const teamColor=x.team==='A'?'var(--green)':'var(--text)';
+    return `<tr class="po-tr">
+      <td class="po-name-cell">
+        <span class="po-tdot" style="background:${teamColor}"></span>
+        <span class="po-name">${x.name}</span>
+      </td>
+      <td class="po-num">${x.ch}</td>
+      <td class="po-num ${isScratch?'po-scratch':''}">${isScratch?'0':'+'+strokes}</td>
+    </tr>`;
+  }).join('');
+
+  let html=`<table class="po-table">
+    <thead>
+      <tr>
+        <th class="po-th-name">Player</th>
+        <th class="po-th">CHP</th>
+        <th class="po-th">PO HCP</th>
+      </tr>
+    </thead>
+    <tbody>${rows}</tbody>
+  </table>`;
+
+  if(teamSolo.A||teamSolo.B){
+    const which=teamSolo.A&&teamSolo.B?'Both teams':(teamSolo.A?S.match.tA:S.match.tB);
+    html+=`<div style="padding:10px 16px;background:#f5e9a8;border-top:1.5px solid #c4861f;">
+      <div style="font-size:11px;font-weight:800;color:var(--dark-amber);">⚠️ ${which} playing solo</div>
+      <div style="font-size:12px;color:var(--dark-amber);margin-top:2px;line-height:1.4;">Forfeits 2 medal points · still plays for 9 hole points</div>
+    </div>`;
+  }
+
+  list.innerHTML=html;
+}
+
+// ─── SETUP LOGIC ──────────────────────────────────────────────────────────────
+const SCHEDULE=[
+  {week:1, date:'May 14', nine:'E'},{week:2, date:'May 21', nine:'W'},
+  {week:3, date:'May 28', nine:'N'},{week:4, date:'Jun 4',  nine:'S'},
+  {week:5, date:'Jun 11', nine:'E'},{week:6, date:'Jun 18', nine:'W'},
+  {week:7, date:'Jun 25', nine:'N'},{week:8, date:'Jul 2',  nine:'S'},
+  {week:9, date:'Jul 9',  nine:'E'},{week:10,date:'Jul 16', nine:'W'},
+  {week:11,date:'Jul 23', nine:'N'},{week:12,date:'Jul 30', nine:'S'},
+  {week:13,date:'Aug 6',  nine:'E'},
+];
+
+function getCurrentWeek(){
+  const today=new Date(), y=today.getFullYear();
+  return SCHEDULE.find(wk=>new Date(wk.date+' '+y)>=today)||SCHEDULE[SCHEDULE.length-1];
+}
+
+function getMatchups(div,weekIdx){
+  const teams=TEAM_ROSTER[div].map(t=>t.team),n=teams.length,fixed=teams[n-1];
+  const rot=[...teams.slice(0,n-1)],r=weekIdx%(n-1);
+  const order=[...rot.slice(r),...rot.slice(0,r)];
+  const m=[[fixed,order[0]]];
+  for(let i=1;i<n/2;i++)m.push([order[i],order[n-1-i]]);
+  return m;
+}
+
+let S={
+  league:null, div:null, week:null, match:null,
+  players:{
+    A:[{name:'',chcp:null,isSub:false,isGuest:false,isSolo:false},{name:'',chcp:null,isSub:false,isGuest:false,isSolo:false}],
+    B:[{name:'',chcp:null,isSub:false,isGuest:false,isSolo:false},{name:'',chcp:null,isSub:false,isGuest:false,isSolo:false}]
+  }
+};
+
+function show(id){const el=document.getElementById(id);if(el)el.style.display='block';}
+function hide(id){const el=document.getElementById(id);if(el)el.style.display='none';}
+
+const SCREENS=['screen-league','screen-week','screen-match','screen-players','screen-players-b','screen-playoff'];
+function showScreen(id){
+  SCREENS.forEach(c=>{const el=document.getElementById(c);if(el)el.classList.remove('active');});
+  const el=document.getElementById(id);
+  if(el) el.classList.add('active');
+  // Hero only shows on league screen — toggle via class
+  document.getElementById('screen-league')?.querySelector('.hero')
+    ?.classList.toggle('hero-hidden', id!=='screen-league');
+}
+function goToTeamB(){
+  showScreen('screen-players-b');
+}
+function backToPlayersA(){
+  showScreen('screen-players');
+}
+function reviewLineup(){
+  renderPlayoffPreview();
+  showScreen('screen-playoff');
+}
+function backToPlayers(){
+  showScreen('screen-players-b');
+}
+
+function backToLeague(){
+  S.week=null;S.match=null;
+  showScreen('screen-league');
+  updateBtn();
+}
+function backToWeek(){
+  S.match=null;
+  renderWeekList();
+  showScreen('screen-week');
+  updateBtn();
+}
+function backToMatch(){
+  renderMatchList();
+  showScreen('screen-match');
+  updateBtn();
+}
+
+function selectLeague(div){
+  S.div=div;S.week=null;S.match=null;
+  S.league='Wed Two-Man Best Ball';
+  // Update tick marks
+  ['D1','D2'].forEach(d=>{
+    const btn=document.getElementById('lb-'+d);
+    if(btn) btn.classList.toggle('sel',d===div);
+  });
+  S.week=null;
+  renderWeekList();
+  showScreen('screen-week');
+  updateBtn();
+}
+
+function renderWeekList(){
+  const el=document.getElementById('week-list');if(!el)return;
+  el.innerHTML='';
+  const current=getCurrentWeek();
+  SCHEDULE.forEach(wk=>{
+    const isSel=S.week&&S.week.week===wk.week;
+    const isCurrent=wk.week===current.week;
+    const row=document.createElement('button');
+    row.className='week-btn'+(isSel?' sel':'')+(isCurrent?' current':'');
+    row.innerHTML=
+      '<div style="flex:1;text-align:left;">'+
+        '<div class="week-label">Week '+wk.week+' · '+wk.date+(isCurrent?'<span class="week-badge">This Week</span>':'')+'</div>'+
+        '<div class="week-nine">'+COURSES[wk.nine].name+'</div>'+
+      '</div>'+
+      '<div class="week-go">›</div>';
+    row.onclick=()=>selectWeek(wk);
+    el.appendChild(row);
+  });
+}
+
+function selectWeek(wk){
+  S.week=wk;S.match=null;
+  renderMatchList();
+  showScreen('screen-match');
+  updateBtn();
+}
+
+function renderMatchList(){
+  const matches=getMatchups(S.div,S.week.week-1);
+  const el=document.getElementById('match-list');if(!el)return;
+  el.innerHTML='';
+  matches.forEach(([tA,tB])=>{
+    const isSel=S.match&&S.match.tA===tA&&S.match.tB===tB;
+    const row=document.createElement('button');
+    row.className='match-row'+(isSel?' sel':'');
+    row.innerHTML=
+      '<div class="match-inner">'+
+        '<div class="match-ta">'+tA+'</div>'+
+        '<div class="match-vs-pill">vs</div>'+
+        '<div class="match-tb">'+tB+'</div>'+
+      '</div>';
+    row.onclick=()=>selectMatch(tA,tB);
+    el.appendChild(row);
+  });
+}
+function selectMatch(tA,tB){
+  S.match={tA,tB};
+  renderMatchList();
+  buildPlayerSlots(tA,tB);
+  showScreen('screen-players');
+  updateBtn();
+
+}
+
+function buildPlayerSlots(tA,tB){
+  document.getElementById('label-a').textContent=tA;
+  document.getElementById('label-b').textContent=tB;
+  document.getElementById('label-a-hdr').textContent=tA+' — Players';
+  document.getElementById('label-b-hdr').textContent=tB+' — Players';
+  ['A','B'].forEach(team=>{
+    [0,1].forEach(idx=>{
+      S.players[team][idx]={name:'',chcp:null,isSub:false,isGuest:false,isSolo:false};
+      renderSlot(team,idx);
+    });
+  });
+}
+
+function renderSlot(team,idx){
+  const p=S.players[team][idx];
+  const isB=team==='B';
+  const slotEl=document.getElementById(`slot-${team.toLowerCase()}${idx}`);
+  const hasName=!!p.name;
+
+  if(p.isSolo){
+    slotEl.innerHTML=`
+      <div class="slot-solo">
+        <div class="slot-solo-text">— Playing Solo —
+          <div class="slot-solo-sub">No second player · forfeits 2 medal points</div>
+        </div>
+        <button class="card-back" onclick="clearSolo('${team}',${idx})">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          <span class="back-label">Change</span>
+        </button>
+      </div>`;
+    return;
+  }
+
+  const badges=`${p.isGuest?'<span class="ps-badge guest">GUEST</span>':''}${p.isSub&&!p.isGuest?'<span class="ps-badge sub">SUB</span>':''}`;
+
+  if(!hasName){
+    slotEl.innerHTML=`
+      <button class="slot-empty${isB?' team-b':''}" onclick="openPlayerPicker('${team}',${idx})">
+        <span class="slot-empty-label">+ Add Player ${idx+1}</span>
+        <div class="lb-go">›</div>
+      </button>`;
+    return;
+  }
+
+  slotEl.innerHTML=`
+    <div class="slot-filled${isB?' team-b':''}">
+      <div class="slot-name-row" onclick="openPlayerPicker('${team}',${idx})">
+        <div style="flex:1;min-width:0;">
+          <div class="slot-name">${p.name} ${badges}</div>
+          <div class="slot-chcp" id="chcp-${team}${idx}">${p.chcp!==null?`Course Hdcp: <b>${p.chcp}</b>`:''}</div>
+        </div>
+        <button id="changebtn-${team}${idx}" class="card-back" onclick="event.stopPropagation();openPlayerPicker('${team}',${idx})">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          <span class="back-label">Change</span>
+        </button>
+      </div>
+      <div class="slot-input-wrap">
+        <div class="slot-input-label">
+          9-Hole Course Handicap
+          <button type="button" onclick="toggleModal('chcp-info')" style="width:24px;height:24px;border-radius:50%;background:var(--muted);color:#fff;font-size:13px;font-weight:800;border:none;cursor:pointer;flex-shrink:0;line-height:1;padding:0;">?</button>
+        </div>
+        <div class="hdcp-stepper">
+          <button class="hdcp-btn" onclick="adjHdcp('${team}',${idx},-0.1)">−</button>
+          <input class="hdcp-val" id="hi-${team}${idx}" type="number" step="0.1" min="0" max="54"
+            value="${p.chcp!==null?p.chcp.toFixed(1):''}" placeholder="—"
+            oninput="onHdcpInput('${team}',${idx},this.value)">
+          <button class="hdcp-btn" onclick="adjHdcp('${team}',${idx},0.1)">+</button>
+        </div>
+      </div>
+    </div>`;
+}
+
+function clearSolo(team,idx){
+  S.players[team][idx]={name:'',chcp:null,isSub:false,isGuest:false,isSolo:false};
+  renderSlot(team,idx);
+  updateBtn();
+}
+
+function setSolo(team,idx){
+  S.players[team][idx]={name:'',chcp:null,isSub:false,isGuest:false,isSolo:true};
+  renderSlot(team,idx);
+  updateBtn();
+}
+
+
+let PP={team:null,idx:null};
+
+function openPlayerPicker(team,idx){
+  PP={team,idx};
+  const tname=team==='A'?S.match.tA:S.match.tB;
+  document.getElementById('pp-who').textContent=`${tname} — Player ${idx+1}`;
+  ['roster','club','guest'].forEach(t=>document.getElementById(`pp-tab-${t}`).classList.toggle('active',t==='roster'));
+  const roster=TEAM_ROSTER[S.div].find(t=>t.team===tname)?.players||[];
+  showRosterTab(team,idx,roster);
+  document.getElementById('player-overlay').classList.add('open');
+}
+
+function closePlayerPicker(){
+  document.getElementById('player-overlay').classList.remove('open');
+}
+
+function drawerTab(tab){
+  ['roster','club','guest'].forEach(t=>document.getElementById(`pp-tab-${t}`).classList.toggle('active',t===tab));
+  const tname=PP.team==='A'?S.match.tA:S.match.tB;
+  const roster=TEAM_ROSTER[S.div].find(t=>t.team===tname)?.players||[];
+  if(tab==='roster') showRosterTab(PP.team,PP.idx,roster);
+  else if(tab==='club') showClubTab(PP.team,PP.idx);
+  else showGuestTab(PP.team,PP.idx);
+}
+
+function togglePicker(team,idx){ openPlayerPicker(team,idx); }
+function switchTab(team,idx,tab){ drawerTab(tab); }
+
+function getUsedNames(excludeTeam,excludeIdx){
+  const used=new Set();
+  ['A','B'].forEach(t=>[0,1].forEach(i=>{
+    if(t===excludeTeam&&i===excludeIdx)return;
+    if(S.players[t][i].name)used.add(S.players[t][i].name);
+  }));
+  return used;
+}
+
+function showRosterTab(team,idx,roster){
+  const body=document.getElementById('pp-body');
+  if(!body)return;
+  body.innerHTML='';
+  const used=getUsedNames(team,idx);
+
+  if(!roster.length){body.innerHTML='<div style="font-size:12px;color:var(--muted);padding:4px;">No roster found</div>';}
+  else roster.forEach(p=>{
+    const row=document.createElement('div');
+    row.className='sub-result';
+    const isCur=S.players[team][idx].name===p.name;
+    const isTaken=used.has(p.name);
+    if(isTaken&&!isCur){row.style.opacity='.35';row.style.pointerEvents='none';}
+    row.style.borderColor=isCur?'var(--green)':'var(--border)';
+    row.style.background=isCur?'#e8eedb':'var(--white)';
+    row.innerHTML=`<span>${p.name}</span><span class="sub-result-hcp">${isCur?'✓ Selected':isTaken?'Already added':''}</span>`;
+    row.onclick=()=>{selectPlayer(team,idx,p.name,false,false);closePlayerPicker();};
+    body.appendChild(row);
+  });
+
+  // Show "Playing Solo" option at the bottom — ONLY for slot 1 when slot 0 has a player
+  if(idx===1 && S.players[team][0].name && !S.players[team][0].isSolo){
+    const soloRow=document.createElement('div');
+    soloRow.className='sub-result';
+    soloRow.style.borderColor='var(--gold)';
+    soloRow.style.borderStyle='dashed';
+    soloRow.style.background='#f5e9a8';
+    soloRow.style.marginTop='8px';
+    soloRow.innerHTML='<span style="color:var(--dark-amber);font-weight:800;">— Playing Solo —</span><span class="sub-result-hcp" style="color:var(--dark-amber);">forfeits 2 medal pts</span>';
+    soloRow.onclick=()=>{ setSolo(team,idx); closePlayerPicker(); };
+    body.appendChild(soloRow);
+  }
+}
+
+function showClubTab(team,idx){
+  const body=document.getElementById('pp-body');
+  body.innerHTML=`
+    <input class="sub-search" placeholder="Search club members..." oninput="filterClub('${team}',${idx},this.value)" autofocus>
+    <div class="sub-results" id="pp-club-results"></div>`;
+  filterClub(team,idx,'');
+}
+
+function filterClub(team,idx,q){
+  const results=document.getElementById('pp-club-results');
+  results.innerHTML='';
+  const used=getUsedNames(team,idx);
+  const filtered=CLUB_MEMBERS.filter(m=>m.name.toLowerCase().includes(q.toLowerCase())&&!used.has(m.name)).slice(0,12);
+  if(!filtered.length){results.innerHTML='<div style="font-size:12px;color:var(--muted);padding:4px;">No members found</div>';return;}
+  filtered.forEach(m=>{
+    const row=document.createElement('div');row.className='sub-result';
+    row.innerHTML=`<span>${m.name}</span><span class="sub-result-hcp" title="GHIN Index — player must enter course handicap">Index ${m.hi}</span>`;
+    row.onclick=()=>{selectPlayer(team,idx,m.name,true,false,null);closePlayerPicker();};
+    results.appendChild(row);
+  });
+}
+
+function showGuestTab(team,idx){
+  const body=document.getElementById('pp-body');
+  body.innerHTML=`
+    <div class="sub-guest">
+      <input id="pp-guest-name" placeholder="Guest name" style="padding:12px;border-radius:8px;border:1.5px solid var(--border);font-size:16px;font-family:'DM Sans',sans-serif;width:100%;">
+      <input id="pp-guest-hi" type="number" step="0.1" min="0" max="54" placeholder="Course Handicap (e.g. 5.4)"
+        style="padding:12px;border-radius:8px;border:1.5px solid var(--border);font-size:16px;font-family:'DM Mono',monospace;width:100%;">
+      <button class="btn-add-guest" onclick="addGuest('${team}',${idx})">Add Guest ✓</button>
+    </div>`;
+}
+
+function addGuest(team,idx){
+  const name=document.getElementById('pp-guest-name').value.trim();
+  const hi=parseFloat(document.getElementById('pp-guest-hi').value);
+  if(!name){alert('Please enter a name');return;}
+  selectPlayer(team,idx,name,false,true,isNaN(hi)?null:hi);
+  closePlayerPicker();
+}
+
+function selectPlayer(team,idx,name,isSub,isGuest,hi=null){
+  // Auto-lookup handicap from club members if not provided
+  if(hi===null){
+    const n=name.toLowerCase();
+    const member=CLUB_MEMBERS.find(m=>m.name.toLowerCase()===n||(m.alt&&m.alt.toLowerCase()===n));
+    if(member) hi=member.hi;
+  }
+  S.players[team][idx]={name,chcp:hi,isSub,isGuest,isSolo:false};
+  renderSlot(team,idx);
+  // Scroll newly filled slot into view so user can see it and adjust handicap
+  setTimeout(()=>{
+    const el=document.getElementById(`slot-${team.toLowerCase()}${idx}`);
+    if(el){const top=el.getBoundingClientRect().top+window.scrollY-150;window.scrollTo({top,behavior:'smooth'});}
+  },100);
+  updateBtn();
+}
+
+
+
+function adjHdcp(team,idx,delta){
+  const cur=S.players[team][idx].chcp||0;
+  const val=Math.max(0,Math.min(54,Math.round((cur+delta)*10)/10));
+  S.players[team][idx].chcp=val;
+  const el=document.getElementById(`hi-${team}${idx}`);
+  if(el) el.value=val.toFixed(1);
+  updateChcp(team,idx,val);
+  updateBtn();
+}
+function onHdcpInput(team,idx,raw){
+  const v=parseFloat(raw);
+  const val=isNaN(v)?null:Math.max(0,Math.min(54,Math.round(v*10)/10));
+  S.players[team][idx].chcp=val;
+  updateChcp(team,idx,val);
+  updateBtn();
+}
+
+function updateChcp(team,idx,hi){
+  const el=document.getElementById(`chcp-${team}${idx}`);
+  if(!el) return;
+  el.innerHTML=hi!==null?`Course Hdcp: <b>${hi}</b>`:'';
+}
+
+
+function updateBtn(){
+  const btn=document.getElementById('btn-start');
+  const p=S.players;
+  // A slot is "filled" if it has a name AND a chcp, OR if it's solo
+  const slotOk=s=>(s.name&&s.chcp!==null)||s.isSolo;
+  const teamOk=t=>!(p[t][0].isSolo&&p[t][1].isSolo);
+  const teamAOk=slotOk(p.A[0])&&slotOk(p.A[1])&&teamOk('A');
+  const allOk=teamAOk&&slotOk(p.B[0])&&slotOk(p.B[1])&&teamOk('B');
+
+  if(btn) btn.disabled=false;
+  const ca=document.getElementById('btn-continue-a');
+  const cb=document.getElementById('btn-continue-b');
+  if(ca){ca.disabled=!teamAOk;ca.textContent=teamAOk?'Continue →':'Complete Team A first';}
+  if(cb){cb.disabled=!allOk;cb.textContent=allOk?'Review Playing Off →':'Complete Team B first';}
+
+  updateProgress();
+}
+
+function updateProgress(){
+  // Step done states
+  const p=S.players;
+  const slotOk = s => (s.name && s.chcp!==null) || s.isSolo;
+  const allOk = slotOk(p.A[0]) && slotOk(p.A[1]) && slotOk(p.B[0]) && slotOk(p.B[1]);
+  const done = {1:!!S.div, 2:!!S.week, 3:!!S.match, 4:allOk};
+  // Active step is the FIRST not-done step (or last if all done)
+  let active=4;
+  for(let i=1;i<=4;i++){ if(!done[i]){active=i;break;} }
+  for(let i=1;i<=4;i++){
+    const el=document.getElementById('prog-'+i);
+    if(!el) continue;
+    el.classList.toggle('done', done[i]);
+    el.classList.toggle('active', !done[i] && i===active);
+  }
+  for(let i=1;i<=3;i++){
+    const ln=document.getElementById('prog-line-'+i);
+    if(!ln) continue;
+    ln.classList.toggle('done', done[i]);
+  }
+}
+
+function startRound(){
+  const {week,match,players}=S;
+  MATCH.week=week.week;MATCH.date=week.date;
+  MATCH.courseKey=week.nine;MATCH.tee='Black/White';
+  MATCH.teamA={name:match.tA};MATCH.teamB={name:match.tB};
+  MATCH.players=[
+    {name:players.A[0].name,hi:players.A[0].chcp,team:'A',isSolo:players.A[0].isSolo},
+    {name:players.A[1].name,hi:players.A[1].chcp,team:'A',isSolo:players.A[1].isSolo},
+    {name:players.B[0].name,hi:players.B[0].chcp,team:'B',isSolo:players.B[0].isSolo},
+    {name:players.B[1].name,hi:players.B[1].chcp,team:'B',isSolo:players.B[1].isSolo},
+  ];
+  Object.values(COURSES).forEach(c=>c.holes.forEach(h=>{for(let i=0;i<4;i++)scores[i][h.hole]=null;}));
+  SCREENS.forEach(id=>{const e=document.getElementById(id);if(e)e.classList.remove('active');});
+  document.getElementById('screen-card').classList.add('active');
+  document.body.classList.add('in-card');
+  render();
+  saveRound();
+}
+
+// ─── PERSISTENCE ─────────────────────────────────────────────────────────────
+const ROUND_KEY='golf_elephant_round';
+function saveRound(){
+  try{localStorage.setItem(ROUND_KEY,JSON.stringify({match:MATCH,scores:scores.map(s=>({...s})),savedAt:Date.now()}));}catch(e){}
+}
+function clearRound(){try{localStorage.removeItem(ROUND_KEY);}catch(e){}}
+function newRound(){
+  clearRound();
+  document.getElementById('screen-card').classList.remove('active');
+  document.body.classList.remove('in-card');
+  S={league:null,div:null,week:null,match:null,
+    players:{
+      A:[{name:'',chcp:null,isSub:false,isGuest:false,isSolo:false},{name:'',chcp:null,isSub:false,isGuest:false,isSolo:false}],
+      B:[{name:'',chcp:null,isSub:false,isGuest:false,isSolo:false},{name:'',chcp:null,isSub:false,isGuest:false,isSolo:false}]
+    }
+  };
+  ['lb-D1','lb-D2'].forEach(id=>{const el=document.getElementById(id);if(el)el.classList.remove('sel');});
+  showScreen('screen-league');
+  updateBtn();
+}
+function checkResume(){
+  try{
+    const raw=localStorage.getItem(ROUND_KEY);
+    if(!raw)return;
+    const data=JSON.parse(raw);
+    if(Date.now()-data.savedAt>86400000){clearRound();return;}
+    Object.assign(MATCH,data.match);
+    data.scores.forEach((s,i)=>Object.assign(scores[i],s));
+    SCREENS.forEach(id=>{const e=document.getElementById(id);if(e)e.classList.remove('active');});
+    document.getElementById('screen-card').classList.add('active');
+    document.body.classList.add('in-card');
+    render();
+  }catch(e){clearRound();}
+}
+
+// ── INIT ──
+checkResume();
+updateBtn();
+
+</script>
+</body>
+</html>
